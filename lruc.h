@@ -47,7 +47,6 @@ lruc *create_cache(unsigned long cache_size, unsigned item_length);
 STATUS free_cache(lruc *cache);
 STATUS set_item(lruc *cache, void *key, unsigned key_length, void *value, unsigned value_length);
 STATUS get_item(lruc *cache, void *key, unsigned key_length, void **value);
-STATUS delete_item(lruc *cache, void *key, unsigned key_length);
 
 #endif
 

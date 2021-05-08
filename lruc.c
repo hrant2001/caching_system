@@ -256,25 +256,3 @@ STATUS get_item(lruc *cache, void *key, unsigned key_length, void **value)
   
   return LRUC_NO_ERROR;
 }
-
-STATUS delete_item(lruc *cache, void *key, unsigned key_length)
-{
-  // Loop until we find the item, or hit the end
-  lruc_item *item = NULL, *prev = NULL;
-  unsigned hash_index = hash_func(cache, key, key_length);
-  item = cache->items[hash_index];
-  
-  while(item && compare_keys(item, key, key_length))
-  {
-    prev = item;
-    item = (lruc_item *) item->next;
-  }
-  
-  if(item)
-  {
-    remove_item(cache, prev, item, hash_index);
-  }
-  
-  return LRUC_NO_ERROR;
-}
-
